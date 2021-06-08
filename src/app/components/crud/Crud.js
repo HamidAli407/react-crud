@@ -1,4 +1,4 @@
-import React,  { useState } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import { Form } from 'formik';
 import * as Yup from "yup";
@@ -11,7 +11,6 @@ import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
 import { RadioGroup } from 'formik-material-ui';
 import useStyles from './CrudStyle';
-
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -21,9 +20,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Snackbar from '@material-ui/core/Snackbar';
 
-
-
-
 export default function Crud() {
     const classes = useStyles({});
     const [userList, setUserList] = React.useState([]);
@@ -32,6 +28,7 @@ export default function Crud() {
     
     const deleteItem = (id) => {
         setUserList(userList.filter(val => val.id !== id));
+        handleClick({ vertical: 'bottom', horizontal: 'left',message:'Record deleted successfully' })
     }
 
     const [state, setState] = React.useState({
@@ -41,20 +38,26 @@ export default function Crud() {
         message:''
     });
     
-      const { vertical, horizontal, open, message } = state;
-    
-      const handleClick = (newState) => {
-          console.log(newState)
-        setState({ open: true, ...newState });    
-      };
-    
-      const handleClose = () => {
-        setState({ ...state, open: false });
-      };
+    const { vertical, horizontal, open, message } = state;
+
+    const handleClick = (newState) => {
+        console.log(newState)
+    setState({ open: true, ...newState });    
+    };
+
+    const handleClose = () => {
+    setState({ ...state, open: false });
+    };
 
     return (
 
         <div className="crudform">
+            <Grid container direction="row" justify="center" alignItems="center">
+                <Box mt={4} className={classes.appName}>
+                    REACT CRUD APP
+                </Box>
+            </Grid>
+
             <Box className={classes.formWrapper} p={8}>
                 <Grid container direction="row" justify="center" alignItems="center">
                     <Box className={classes.formBox} p={4}>
@@ -90,7 +93,6 @@ export default function Crud() {
                             }}>
                             {({values}) => {
                                 return(
-                                    
                                     <Form>
                                         {((userList.length<1) || updateItem || addNew) &&
                                             <div>
@@ -156,7 +158,6 @@ export default function Crud() {
                         {((userList.length>0) && !updateItem && !addNew) &&
 
                             <Box mt={4}>
-                               
                                 <Box  mb={4}>
                                     <Button onClick={() => setAddNew(true)} variant="contained" color="primary">
                                         Add new Record
@@ -175,7 +176,6 @@ export default function Crud() {
                                         </TableHead>
 
                                         <TableBody>
-                                            
                                             {userList.map(val => (
                                                 <TableRow key={val}>
                                                     <TableCell component="th" scope="row">
@@ -184,24 +184,27 @@ export default function Crud() {
                                                     
                                                     <TableCell align="left">{val.email}</TableCell>
                                                     <TableCell align="left">{val.gender1}</TableCell>
-                                                    <TableCell align="left">
-                                                        <Button size="small" color="secondary" variant="contained" onClick={() => deleteItem(val.id)}>Delete</Button>
-                                                    </TableCell>
+
                                                     <TableCell align="left">
                                                         <Button size="small" color="primary" variant="contained" onClick={() => setUpdateItem(val)}>Update</Button>
                                                     </TableCell>
+                                                    
+                                                    <TableCell align="left">
+                                                        <Button size="small" color="secondary" variant="contained" onClick={() => deleteItem(val.id)}>Delete</Button>
+                                                    </TableCell>
+                                                   
                                                 </TableRow>
 
                                             ))}
                                         </TableBody>
                                     </Table>
                                 </TableContainer>
-
                             </Box>
                         }
                     </Box>
                 </Grid>
             </Box>
+
             <Snackbar
                 open={open} 
                 autoHideDuration={3000} 
@@ -210,8 +213,6 @@ export default function Crud() {
                 message={message}
                 key={vertical + horizontal}
             />
-
         </div>
-
     )
 }

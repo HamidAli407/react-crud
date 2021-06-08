@@ -3,8 +3,13 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 export const useStyles = makeStyles((theme) =>
   createStyles({
 
+    appName:{
+        fontSize: '2rem',
+        fontFamily: "Roboto",
+        fontWeight: 600,
+    },
+
     formLabel:{
-        // fontWeight: '600',
         color: '#353535'
     },
 
