@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Crud from './app/components/crud/Crud';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Crud/>
   </React.StrictMode>,
   document.getElementById('root')
 );
