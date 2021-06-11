@@ -20,14 +20,19 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Snackbar from '@material-ui/core/Snackbar';
 
+// interface IProps{
+//     name: String,
+//     setName: Fu
+// }
+
 export default function Crud() {
-    const classes = useStyles({});
-    const [userList, setUserList] = React.useState([]);
-    const [updateItem, setUpdateItem] = React.useState();
-    const [addNew, setAddNew] = React.useState(true);
+    const classes:any = useStyles({});
+    const [userList, setUserList]:any = React.useState([]);
+    const [updateItem, setUpdateItem]:any = React.useState();
+    const [addNew, setAddNew]:any = React.useState(true);
     
-    const deleteItem = (id) => {
-        setUserList(userList.filter(val => val.id !== id));
+    const deleteItem = (id:any) => {
+        setUserList(userList.filter((val:any) => val.id !== id));
         handleClick({ vertical: 'bottom', horizontal: 'left',message:'Record deleted successfully' })
     }
 
@@ -40,7 +45,7 @@ export default function Crud() {
     
     const { vertical, horizontal, open, message } = state;
 
-    const handleClick = (newState) => {
+    const handleClick = (newState:any) => {
         console.log(newState)
     setState({ open: true, ...newState });    
     };
@@ -75,15 +80,15 @@ export default function Crud() {
                             })}
                             onSubmit={(values,{resetForm}) => { 
                                 if(updateItem){
-                                    let data = [...userList];
-                                    let itemIndex = data.findIndex(val => val.id === updateItem.id);
+                                    let data:any = [...userList];
+                                    let itemIndex = data.findIndex((val:any) => val.id === updateItem.id);
                                     data[itemIndex].name = values.name;
                                     data[itemIndex].email = values.email;
                                     data[itemIndex].gender1 = values.gender1;
                                     setUserList(data);
                                     setUpdateItem(null)
                                 }else{
-                                    let data = {...values};
+                                    let data:any = {...values};
                                     data.id = userList.length;
                                     setUserList([...userList, data]);
                                 }
@@ -176,7 +181,7 @@ export default function Crud() {
                                         </TableHead>
 
                                         <TableBody>
-                                            {userList.map(val => (
+                                            {userList.map((val:any) => (
                                                 <TableRow key={val}>
                                                     <TableCell component="th" scope="row">
                                                         {val.name}
