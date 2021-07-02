@@ -2,11 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Crud from './app/components/crud/Crud';
+import App from './app/components/app/App';
+// import Crud from './app/components/crud/Crud';
+import {IntlProvider} from 'react-intl';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Crud/>
+    <IntlProvider locale="en-US">
+    <Router>
+      <App/>
+    </Router>
+    </IntlProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
