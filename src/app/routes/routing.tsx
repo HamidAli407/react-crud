@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import AboutUs from "../components/about-us/AboutUs";
 import Crud from "../components/crud/Crud";
+import Tasks from "../components/tasks/Tasks";
 
 
 export default function Routing() {
@@ -29,6 +30,7 @@ export default function Routing() {
         <Switch>
           <Route exact path="/" component={Crud} />
           <Route exact path="/about-us" component={AboutUs} />
+          <Route exact path="/tasks" component={Tasks} />
         </Switch>
       </div>
     

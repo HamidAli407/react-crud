@@ -15,6 +15,7 @@ import InfoIcon from '@material-ui/icons/Info';
 import Routing from '../../routes/routing';
 import {NavLink, withRouter} from 'react-router-dom';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 
 function App(props: any)  {
   const classes = useStyles();
@@ -50,12 +51,10 @@ function App(props: any)  {
           </List>
           <Divider />
           <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <InfoIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
+          <ListItem button component={NavLink} to={`/tasks`}>
+                <ListItemIcon style={{color:'#6b778c'}}><AssignmentIcon/></ListItemIcon>
+                <ListItemText primary="Tasks"/>
+            </ListItem>
           </List>
         </div>
       </Drawer>
