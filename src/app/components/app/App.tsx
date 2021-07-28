@@ -56,6 +56,12 @@ function App(props: any)  {
                 <ListItemText primary="Tasks"/>
             </ListItem>
           </List>
+          <List>
+          <ListItem button component={NavLink} to={`/login`}>
+                <ListItemIcon style={{color:'#6b778c'}}><AssignmentIcon/></ListItemIcon>
+                <ListItemText primary="Login"/>
+            </ListItem>
+          </List>
         </div>
       </Drawer>
       <main className={classes.content}>

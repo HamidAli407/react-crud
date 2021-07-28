@@ -31,6 +31,7 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import {Post} from "../../../utils/JSONUtil"
 
 // interface IProps{
 //     name: String,
@@ -150,7 +151,15 @@ export default function Crud() {
                                     data.id = userList.length;
                                     setUserList([...userList, data]);
                                     // console.log(data);
+                                    Post("http://127.0.0.1:3001/data", data);
+
+                                    // axios.get("http://127.0.0.1:3002/data", data).then(()=>{
+                                    //     console.log("Record Created");
+                                    // }).catch(()=>{
+                                    //     console.log("Error");
+                                    // });
                                 }
+
                                 handleClick({ vertical: 'bottom', horizontal: 'left',message:updateItem?'Record updated successfully':'Record added successfully' })
                                 resetForm();
                                 setAddNew(false)

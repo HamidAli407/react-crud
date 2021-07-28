@@ -11,15 +11,19 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import {Auth0Provider} from '@auth0/auth0-react';
+
+const domain:any = process.env.REACT_APP_AUTH0_DOMAIN;
+const clientId:any = process.env.REACT_APP_AUTH0_CLIENT_ID;
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Auth0Provider domain={domain} clientId={clientId} redirectUri={window.location.origin}>
     <IntlProvider locale="en-US">
     <Router>
       <App/>
     </Router>
     </IntlProvider>
-  </React.StrictMode>,
+  </Auth0Provider>,
   document.getElementById('root')
 );
 
