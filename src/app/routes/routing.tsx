@@ -9,6 +9,7 @@ import AboutUs from "../components/about-us/AboutUs";
 import Crud from "../components/crud/Crud";
 import Login from "../components/login/Login";
 import Tasks from "../components/tasks/Tasks";
+import ProtectedRoute from "../../auth/protected-route";
 
 export default function Routing() {
   return (
@@ -28,10 +29,10 @@ export default function Routing() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route exact path="/" component={Crud} />
+          <ProtectedRoute exact path="/crud" component={Crud} />
           <Route exact path="/about-us" component={AboutUs} />
-          <Route exact path="/tasks" component={Tasks} />
-          <Route exact path="/login" component={Login} />
+          <ProtectedRoute exact path="/tasks" component={Tasks} />
+          <Route exact path="/" component={Login} />
         </Switch>
       </div>
     

@@ -39,7 +39,7 @@ function App(props: any)  {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-          <ListItem button component={NavLink} to={`/`}>
+          <ListItem button component={NavLink} to={`/crud`}>
                 <ListItemIcon style={{color:'#6b778c'}}><DashboardIcon/></ListItemIcon>
                 <ListItemText primary="Dashboard"/>
             </ListItem>
@@ -57,7 +57,7 @@ function App(props: any)  {
             </ListItem>
           </List>
           <List>
-          <ListItem button component={NavLink} to={`/login`}>
+          <ListItem button component={NavLink} to={`/`}>
                 <ListItemIcon style={{color:'#6b778c'}}><AssignmentIcon/></ListItemIcon>
                 <ListItemText primary="Login"/>
             </ListItem>
